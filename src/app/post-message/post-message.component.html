@@ -1,0 +1,60 @@
+<div align="center">
+<div style="  border: 2px solid black; padding: 30px; width: 350px; height: 450px;">
+<form [formGroup]="messageForm"> 
+    <div class="fields">
+    <label>Full Name</label>
+    <br/>
+<input type="text" id="fullName"  required minlength="3" name="fullName" class="form-control"
+formControlName="fullName" required >
+</div>
+<div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="fullName.errors.required">
+<p style="color: red;">Full Name is required.</p>    
+  </div>
+  <div *ngIf="fullName.errors.minlength">
+    
+    <p style="color: red;">Full Name must be at least 3 characters long.</p>    
+  </div>
+</div>
+
+<div class="fields">
+<label>Email</label>
+
+<input type="email" name="email" ngModel [email]="true" id="email" name="email" class="form-control, email"
+formControlName="email" required [pattern]="re">
+
+<div *ngIf="email.invalid && (email.dirty || email.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="email.errors.required">
+<p style="color: red;">Email is required.</p>
+  </div>
+  <div *ngIf="email.errors.pattern">
+<p>Invalid email id..</p>
+  </div>
+
+</div>
+
+</div>
+
+<div class="fields">
+<label>Message</label>
+
+<textarea id="message" name="message" class="form-control"
+formControlName="message" required></textarea>
+
+<div *ngIf="message.invalid && (email.dirty || email.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="message.errors.required">
+<p style="color: red;">Message is required.</p>
+  </div>
+  </div>
+
+</div>
+<button class="button" (click) = "sendMessage()">Submit</button>
+</form>
+</div>
+</div>
