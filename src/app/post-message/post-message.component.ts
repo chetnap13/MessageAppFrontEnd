@@ -34,10 +34,10 @@ export class PostMessageComponent implements OnInit {
     return this.messageForm.get('message')
   }
  sendMessage(){
-   if(this.messageForm.value.fullName.length > 3 && this.re.test(this.messageForm.value.email) && this.messageForm.value.message.length > 0)
+   if(this.messageForm.value.fullName.length > 3 && this.re.test(this.messageForm.value.email))
    {
     this.messageService.postMessage(this.messageForm.value).subscribe((res)=>{
-        alert('Thank you')
+        alert('Thanks for your interest. we will revert you in 24 hours..!')
         this.messageForm.reset()
     },err=>{
       this.errrorMessage = err
@@ -50,10 +50,7 @@ export class PostMessageComponent implements OnInit {
       alert('Invalid email address')
      }
      else if(this.messageForm.value.fullName.length < 3){
-       alert('Invalid Full Name')       
-     }
-     else{
-       alert('Message cant be empty')
+       alert('Invalid Name')       
      }
    }
  }

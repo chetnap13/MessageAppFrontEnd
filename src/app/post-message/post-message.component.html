@@ -2,7 +2,7 @@
 <div style="  border: 2px solid black; padding: 30px; width: 350px; height: 450px;">
 <form [formGroup]="messageForm"> 
     <div class="fields">
-    <label>Full Name</label>
+    <label>Name</label>
     <br/>
 <input type="text" id="fullName"  required minlength="3" name="fullName" class="form-control"
 formControlName="fullName" required >
@@ -11,11 +11,11 @@ formControlName="fullName" required >
     class="alert alert-danger">
 
   <div *ngIf="fullName.errors.required">
-<p style="color: red;">Full Name is required.</p>    
+<p style="color: red;">Name is required.</p>    
   </div>
   <div *ngIf="fullName.errors.minlength">
     
-    <p style="color: red;">Full Name must be at least 3 characters long.</p>    
+    <p style="color: red;">Name must be at least 3 characters long.</p>    
   </div>
 </div>
 
@@ -44,14 +44,6 @@ formControlName="email" required [pattern]="re">
 
 <textarea id="message" name="message" class="form-control"
 formControlName="message" required></textarea>
-
-<div *ngIf="message.invalid && (email.dirty || email.touched)"
-    class="alert alert-danger">
-
-  <div *ngIf="message.errors.required">
-<p style="color: red;">Message is required.</p>
-  </div>
-  </div>
 
 </div>
 <button class="button" (click) = "sendMessage()">Submit</button>
